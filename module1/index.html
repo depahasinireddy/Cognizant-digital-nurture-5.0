@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Community Event Portal</title>
+
+    <!-- Google Fonts Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Embedded Styles -->
+    <style>
+        /* Body background styling - embedded style tag */
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation bar for moving between sections -->
+
+    <nav>
+
+        <a href="#home">Home</a>
+        <a href="#gallery">Past Events</a>
+        <a href="#register">Register</a>
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+    <!-- Welcome banner section -->
+
+    <header id="home">
+
+        <div id="welcomeBanner">
+
+            <h1 style="color: red;">Welcome to the Community Event Portal</h1>
+
+            <p>
+                Bringing residents together through social,
+                cultural, and environmental activities.
+            </p>
+
+            <p>
+                <span class="highlight">
+                    Special Offer:
+                </span>
+
+                Free registration for the first 50 participants!
+            </p>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <!-- Gallery section showing community activities -->
+
+        <section id="gallery">
+
+            <h2>Community Highlights</h2>
+
+            <p class="galleryText">
+                These activities helped residents connect,
+                volunteer, and build a stronger neighborhood.
+            </p>
+
+            <table class="galleryTable">
+
+                <tr>
+
+                    <td>
+
+                        <img src="images/cleanup.jpg.jpeg"
+                             alt="Community Clean-Up Drive"
+                             title="Community Clean-Up Drive"
+                             ondblclick="zoomImage(this)">
+
+                        <p>Community Clean-Up Drive</p>
+
+                    </td>
+
+                    <td>
+
+                        <img src="images/food.jpg.jpeg"
+                             alt="Food Donation Program"
+                             title="Food Donation Program"
+                             ondblclick="zoomImage(this)">
+
+                        <p>Food Donation Program</p>
+
+                    </td>
+
+                    <td>
+
+                        <img src="images/festival.jpg.jpeg"
+                             alt="Annual Cultural Festival"
+                             title="Annual Cultural Festival"
+                             ondblclick="zoomImage(this)">
+
+                        <p>Annual Cultural Festival</p>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+
+                        <img src="images/green.jpg.jpeg"
+                             alt="Green Community Initiative"
+                             title="Green Community Initiative"
+                             ondblclick="zoomImage(this)">
+
+                        <p>Green Community Initiative</p>
+
+                    </td>
+
+                    <td>
+
+                        <img src="images/sports.jpg.jpeg"
+                             alt="Community Sports Day"
+                             title="Community Sports Day"
+                             ondblclick="zoomImage(this)">
+
+                        <p>Community Sports Day</p>
+
+                    </td>
+
+                    <td>
+
+                        <img src="images/talent.jpg.jpeg"
+                             alt="Neighborhood Talent Showcase"
+                             title="Neighborhood Talent Showcase"
+                             ondblclick="zoomImage(this)">
+
+                        <p>Neighborhood Talent Showcase</p>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+        <!-- Registration form -->
+
+        <section id="register">
+
+            <h2>Event Registration Form</h2>
+
+            <form id="eventForm">
+
+                <label>Full Name:</label>
+
+                <input type="text"
+                       id="name"
+                       placeholder="Enter your full name"
+                       required
+                       autofocus>
+
+                <label>Email Address:</label>
+
+                <input type="email"
+                       id="email"
+                       placeholder="Enter your email"
+                       required>
+
+                <label>Phone Number:</label>
+
+                <input type="text"
+                       id="phone"
+                       placeholder="Enter 10-digit phone number"
+                       onblur="validatePhone()"
+                       required>
+
+                <label>Select Event:</label>
+
+                <select id="eventType"
+                        onchange="showFee(this.value)">
+
+                    <option value="">Choose Event</option>
+                    <option value="100">Clean-Up Drive</option>
+                    <option value="150">Food Donation Program</option>
+                    <option value="200">Cultural Festival</option>
+                    <option value="120">Sports Day</option>
+
+                </select>
+
+                <p id="fee"></p>
+
+                <label>Select Date:</label>
+
+                <input type="date" id="date">
+
+                <label>Your Feedback:</label>
+
+                <textarea id="feedback"
+                          placeholder="Write your feedback"
+                          onkeyup="countCharacters()"></textarea>
+
+                <p>
+                    Characters Typed:
+                    <span id="charCount">0</span>
+                </p>
+
+                <button id="registerBtn" type="submit"
+                    onclick="confirmRegistration()">
+
+                    Submit Registration
+
+                </button>
+
+                <button type="button"
+                        onclick="savePreference()">
+
+                    Save Preference
+
+                </button>
+
+                <button type="button"
+                        onclick="clearPreferences()">
+
+                    Clear Preferences
+
+                </button>
+
+            </form>
+
+            <p id="successMessage"></p>
+
+        </section>
+
+        <!-- Video section -->
+
+        <section id="videoSection">
+
+            <h2>Community Event Invitation</h2>
+
+            <video width="500"
+                   controls
+                   oncanplay="videoReady()">
+
+                <source src="videos/event.mp4.mp4"
+                        type="video/mp4">
+
+            </video>
+
+        </section>
+
+        <!-- Geolocation section -->
+
+        <section id="locationSection">
+
+            <h2>Find Nearby Community Events</h2>
+
+            <button onclick="findLocation()">
+
+                Find My Location
+
+            </button>
+
+            <p id="location"></p>
+
+        </section>
+
+    </main>
+
+    <!-- Footer section -->
+
+    <footer id="contact">
+
+        <h3>Contact Us</h3>
+
+        <p>Email: communityportal@gmail.com</p>
+
+        <p>Phone: +91 9876543210</p>
+
+        <p>
+            Designed for local residents and volunteers.
+        </p>
+
+    </footer>
+
+    <!-- Events list, filters, and spinner are powered by main.js -->
+    <section id="events" class="event-section">
+        <h2>Upcoming Events</h2>
+
+        <div class="filters" style="text-align:center; margin-bottom:16px;">
+            <input id="searchInput" placeholder="Quick search by name..." style="padding:8px; width:30%;" />
+
+            <select id="categoryFilter" style="padding:8px; margin-left:8px;">
+                <option value="">All Categories</option>
+                <option value="food stalls">Food Stalls</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Cultural Fest">Cultural Fest</option>
+                <option value="Sports">Sports</option>
+            </select>
+
+            <select id="locationFilter" style="padding:8px; margin-left:8px;">
+                <option value="">All Locations</option>
+                <option value="Park">Park</option>
+                <option value="Hall">Community Hall</option>
+                <option value="Center">Community Center</option>
+            </select>
+
+            <button id="jqDemoBtn" class="cta-button" style="margin-left:12px;">jQuery Demo</button>
+        </div>
+
+        <div id="spinner" class="removed text-center" aria-hidden="true">Loading events...</div>
+
+        <div id="eventList" class="event-container" aria-live="polite"></div>
+    </section>
+
+    <!-- jQuery CDN (small demo) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJ+Y3Q0vQ4h2rP6Y5c5Y5x2h2vZ+3A6X9mY58=" crossorigin="anonymous"></script>
+
+    <!-- Main application script -->
+    <script src="main.js"></script>
+
+</body>
+
+</html>

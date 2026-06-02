@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 14.1</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+
+        <h2 class="text-center text-primary mb-4">
+            Bootstrap Display Utilities
+        </h2>
+
+        <!-- Hidden on all screens, visible from md and above -->
+        <div class="d-none d-md-block bg-success text-white p-4 rounded mb-3">
+
+            <h4>Tablet and Desktop View</h4>
+
+            <p>
+                This section is hidden on mobile devices and
+                visible on tablets and desktops.
+            </p>
+
+        </div>
+
+        <!-- Visible only on large screens -->
+        <div class="d-none d-lg-flex bg-primary text-white p-4 rounded justify-content-center">
+
+            <h4>
+                Visible Only on Large Screens
+            </h4>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
